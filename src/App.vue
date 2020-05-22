@@ -12,14 +12,7 @@
           option(disabled, selected) 選択してね
           option(v-for="lang in languages") {{lang}}
     section#issues
-      aside(v-for="issue in issues")
-        h3
-          a(:href='issue.html_url', target='_blank', rel="noopener noreferrer") [外部リンク]{{issue.title}}
-        p
-          label(v-for='label in issue.labels', :style="{backgroundColor: '#'+label.color}") {{label.name}}
-          | created at {{issue.created_at}}
-        hr
-        div(v-html="renderMD(issue.body)")
+      Issues(v-for="issue in issues", :key="issue.title", :data="issue")
     section
       button(@click="paginate", v-if="issues.length") さらに読み込む
 </template>
@@ -27,19 +20,8 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import languages from '@/languages'
+import Issues from '@/components/Issues.vue'
 import axios from 'axios'
-import { Marked, escape, Renderer } from 'marked-ts'
-
-Marked.setOptions({
-  renderer: new Renderer(),
-  gfm: true,
-  tables: true,
-  breaks: false,
-  pedantic: false,
-  sanitize: false,
-  smartLists: true,
-  smartypants: false
-})
 
 interface GithubLabel {
   color: string;
@@ -83,7 +65,12 @@ class Label {
   }
 }
 
-@Component
+@Component({
+  components: {
+    Issues
+  }
+})
+
 export default class App extends Vue {
   public page=1;
   public languages: Array<string> = languages;
@@ -100,10 +87,6 @@ export default class App extends Vue {
   public paginate (): void {
     this.page++
     this.getIssues()
-  }
-
-  public renderMD (markdown: string): string {
-    return Marked.parse(escape(markdown))
   }
 
   public async getIssues (): Promise<void> {
@@ -139,8 +122,8 @@ export default class App extends Vue {
   }
 }
 </script>
-<style>
-  #issues aside{
+<style lang="scss">
+  #issues aside {
     width: 60%;
   }
   p label {
