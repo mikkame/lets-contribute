@@ -1,38 +1,32 @@
 ---
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
+name: バグ報告
+about: うまく動かない、表示されないなどバグはこちら
+labels: bug
+assignees: 'mikkame'
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+**バグの詳細**
+ex) さらに読み込むボタンを押しても動かない
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+**再現手順**
+ex) 
+1. ウェブサイト '...' にアクセスする
+2. '....' をクリックする
+3. 待つ
+4. 動かない
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+**期待される挙動**
+ex) 動かないなら動かないでその旨告知すべき、エラーで動いていないようなら修正
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+**スクリーンショット**
+可能なら添付してください
 
-**Desktop (please complete the following information):**
+**環境:**
  - OS: [e.g. iOS]
  - Browser [e.g. chrome, safari]
  - Version [e.g. 22]
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
 
-**Additional context**
-Add any other context about the problem here.
+**申し送り事項**
+申し送り事項がある場合はこちらに記載してください
