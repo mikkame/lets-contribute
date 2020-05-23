@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import './registerServiceWorker'
 require('mvp.css')
+require('devicon')
 Vue.config.productionTip = false
 
 new Vue({

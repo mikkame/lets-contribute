@@ -1,16 +1,15 @@
 <template lang="pug">
   div
-    section
-      aside
+    div
+      section
         h1 Let's Contribute!
         h2 日本語でコントリビュートできるIssue 集めました
-      aside
-
+      section
         label プログラミング言語
-
-        select(v-model="lang", placeholder="選択してね", @change="changeLang")
-          option(disabled, selected) 選択してね
-          option(v-for="lang in languages") {{lang}}
+        label(v-for='language in languages').lang
+          input(type='radio', name='lang', v-model="lang", :value="language.name", @change="changeLang")
+          i(:class="`devicon-${language.icon}-plain colored`", v-if="language.icon")
+          | {{language.name}}
     section#issues
       Issues(v-for="issue in issues", :key="issue.title", :data="issue")
     section
@@ -19,7 +18,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import languages from '@/languages'
+import languages, { Lang } from '@/languages'
 import Issues from '@/components/Issues.vue'
 import { GithubIssue, GithubResponse } from '@/@types/Github'
 import axios from 'axios'
@@ -41,7 +40,7 @@ class Label {
 
 export default class App extends Vue {
   public page=1;
-  public languages: Array<string> = languages;
+  public languages: Array<Lang> = languages;
   public lang = '';
   public labels: Array<Label> = [new Label('good first issue', true), new Label('help wanted')]
   public issues: Array<GithubIssue> = []
@@ -98,5 +97,8 @@ export default class App extends Vue {
     display: inline;
     padding: 2px;
     margin: 3px;
+  }
+  .lang {
+    margin: 2px 10px;
   }
 </style>

@@ -1,46 +1,73 @@
+export interface Lang {
+  name: string;
+  icon: string;
+
+}
+
 export default [
-  'ActionScript',
-  'Arduino',
-  'ASP',
-  'C',
-  'C++',
-  'C#',
-  'Clojure',
-  'ClojureScript',
-  'CSS',
-  'CoffeeScript',
-  'Elm',
-  'Elixir',
-  'Emacs Lisp',
-  'Erlang',
-  'Fortran',
-  'Go',
-  'Groovy',
-  'Haskell',
-  'HTML',
-  'Java',
-  'JavaScript',
-  'Lisp',
-  'Lua',
-  'Makefile',
-  'Matlab',
-  'Objective-C',
-  'OCaml',
-  'Pascal',
-  'Perl',
-  'PHP',
-  'PowerShell',
-  'Puppet',
-  'Python',
-  'R',
-  'Ruby',
-  'Rust',
-  'Scala',
-  'Shell',
-  'SQL',
-  'Swift',
-  'TeX',
-  'TypeScript',
-  'VimL',
-  'Visual Basic'
-] as Array<string>
+  {
+    name: 'C',
+    icon: 'c'
+  },
+  {
+    name: 'C++',
+    icon: 'cplusplus'
+  },
+  {
+    name: 'C#',
+    icon: 'csharp'
+  },
+  {
+    name: 'CSS',
+    icon: 'css3'
+  },
+  {
+    name: 'Go',
+    icon: 'go'
+  },
+  {
+    name: 'HTML',
+    icon: 'html5'
+  },
+  {
+    name: 'Java',
+    icon: 'java'
+  },
+  {
+    name: 'JavaScript',
+    icon: 'javascript'
+  },
+  {
+    name: 'PHP',
+    icon: 'php'
+  },
+  {
+    name: 'Python',
+    icon: 'python'
+  },
+  {
+    name: 'React',
+    icon: 'react'
+  },
+  {
+    name: 'Ruby',
+    icon: 'ruby'
+  },
+  {
+    name: 'Shell',
+    icon: ''
+  },
+  {
+    name: 'Swift',
+    icon: 'swift'
+  },
+  {
+    name: 'TypeScript',
+    icon: 'typescript'
+  },
+  {
+    name: 'Vue',
+    icon: 'vuejs'
+  }
+
+] as Array<Lang>
