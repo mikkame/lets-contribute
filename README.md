@@ -1,24 +1,29 @@
 # lets-contribute
 
-## Project setup
+日本語の `help wanted` `good first issue` タグがついたIssueを集めました。
+let's contribute で OSSデビューしよう！
+
+[ウェブサイトはこちら https://lets-contribute.netlify.app/](https://lets-contribute.netlify.app/)
+
+
+# 開発者用情報
+
+## セットアップ
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### 開発サーバ立ち上げ
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### ビルド
 ```
 yarn build
 ```
 
-### Lints and fixes files
+### LINT
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
