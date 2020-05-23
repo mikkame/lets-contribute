@@ -22,7 +22,7 @@ import languages, { Lang } from '@/languages'
 import Issues from '@/components/Issues.vue'
 import { GithubIssue, GithubResponse } from '@/@types/Github'
 import axios from 'axios'
-
+const frequentChars = 'いうんかし'
 class Label {
   public name: string;
   public active = false;
@@ -67,24 +67,20 @@ export default class App extends Vue {
       return `label:"${label.name}"`
     }).join(' ')).join(' ')
 
-    const result: Array<GithubResponse> = await Promise.all('いん'.split('').map((char: string): Promise<GithubResponse> => {
-      return axios.get(`https://api.github.com/search/issues?q=${baseQuery}%20${char}`, {
-        params: {
-          page: this.page,
-          sort: 'created',
-          order: 'desc'
-        }
-      })
-    }))
+    const result: GithubResponse = await axios.get(`https://api.github.com/search/issues?q=${baseQuery}%20 ${frequentChars.split('').join(' OR ')}`, {
+      params: {
+        page: this.page,
+        sort: 'created',
+        order: 'desc'
+      }
+    })
 
-    result.map((response) => {
-      response.data.items.map((issue: GithubIssue) => {
-        if (this.issues.filter((alreadyIssue) => {
-          return alreadyIssue.id === issue.id
-        }).length === 0) {
-          this.issues.push(issue)
-        }
-      })
+    result.data.items.map((issue: GithubIssue) => {
+      if (this.issues.filter((alreadyIssue) => {
+        return alreadyIssue.id === issue.id
+      }).length === 0) {
+        this.issues.push(issue)
+      }
     })
   }
 }
