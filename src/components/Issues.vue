@@ -1,19 +1,20 @@
 <template lang="pug">
   aside
-    div.summary(:class="{ active: flag }", @click="showToggle")
+    div.summary(:class="{ active: open }", @click="showToggle")
       h3
         a(:href='data.html_url', target='_blank', rel="noopener noreferrer") [外部リンク]{{data.title}}
       p
         label(v-for='label in data.labels', :style="{backgroundColor: '#'+label.color}") {{label.name}}
         | created at {{data.created_at}}
-    div.description(v-if="flag")
+    div.description(v-if="open")
       hr
       div(v-html="renderMD(data.body)")
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Prop, Component, Vue } from 'vue-property-decorator'
 import { Marked, escape, Renderer } from 'marked-ts'
+import { GithubIssue } from '@/@types/Github'
 
 Marked.setOptions({
   renderer: new Renderer(),
@@ -27,20 +28,20 @@ Marked.setOptions({
 })
 
 @Component({
-  props: {
-    data: Object
-  }
 })
 
 export default class Issues extends Vue {
-  flag = false
+  @Prop()
+  data!: GithubIssue
+
+  open = false
 
   public renderMD (markdown: string): string {
     return Marked.parse(escape(markdown))
   }
 
   public showToggle (): void {
-    this.flag = !this.flag
+    this.open = !this.open
   }
 }
 </script>

@@ -21,41 +21,9 @@
 import { Component, Vue } from 'vue-property-decorator'
 import languages from '@/languages'
 import Issues from '@/components/Issues.vue'
+import { GithubIssue, GithubResponse } from '@/@types/Github'
 import axios from 'axios'
 
-interface GithubLabel {
-  color: string;
-  name: string;
-}
-interface GithubIssue {
-    assignee: undefined;
-    assignees: undefined;
-    author_association: string;
-    body: string;
-    closed_at: null;
-    comments: 1;
-    comments_url: string;
-    created_at: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    labels: Array<GithubLabel>;
-    labels_url: string;
-    locked: boolean;
-    milestone: string | null;
-    node_id: string;
-    number: number;
-    repository_url: string;
-    score: number;
-    state: string;
-    title: string;
-    updated_at: string;
-}
-interface GithubResponse {
-  data: {
-    items: Array<GithubIssue>;
-  };
-}
 class Label {
   public name: string;
   public active = false;
