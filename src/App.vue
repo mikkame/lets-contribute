@@ -73,6 +73,8 @@ export default class App extends Vue {
         sort: 'created',
         order: 'desc'
       }
+    }).catch(() => {
+      alert('Github API のアクセスに失敗しました。1分あたり10回までのリクエスト制限に達しているか、Githubが障害を起こしているかこのサービスのバグです')
     })
 
     result.data.items.map((issue: GithubIssue) => {
