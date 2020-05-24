@@ -21,7 +21,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import languages, { Lang } from '@/languages'
 import Issues from '@/components/Issues.vue'
 import { GithubIssue, GithubResponse } from '@/@types/Github'
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 const frequentChars = 'いうんかし'
 class Label {
   public name: string;
@@ -67,7 +67,7 @@ export default class App extends Vue {
       return `label:"${label.name}"`
     }).join(' ')).join(' ')
 
-    const result: GithubResponse = await axios.get(`https://api.github.com/search/issues?q=${baseQuery}%20 ${frequentChars.split('').join(' OR ')}`, {
+    const result: AxiosResponse<GithubResponse> = await axios.get(`https://api.github.com/search/issues?q=${baseQuery}%20 ${frequentChars.split('').join(' OR ')}`, {
       params: {
         page: this.page,
         sort: 'created',
@@ -75,6 +75,7 @@ export default class App extends Vue {
       }
     }).catch(() => {
       alert('Github API のアクセスに失敗しました。1分あたり10回までのリクエスト制限に達しているか、Githubが障害を起こしているかこのサービスのバグです')
+      return { data: {} } as AxiosResponse
     })
 
     result.data.items.map((issue: GithubIssue) => {

@@ -27,7 +27,5 @@ export interface GithubIssue {
   updated_at: string;
 }
 export interface GithubResponse {
-  data: {
-    items: Array<GithubIssue>;
-  };
+  items: Array<GithubIssue>;
 }
