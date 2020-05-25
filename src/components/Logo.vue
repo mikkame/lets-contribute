@@ -30,14 +30,22 @@ export default class Logo extends Vue {
     overflow: hidden;
     & h1 {
       font-size: 64px;
-      margin: 0 0 30px 0;
+      margin: 0;
+      width: 100%;
     }
     & .inner {
       margin: 60px;
 
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-wrap: wrap;
       color: black;
       background: rgba(255,255,255, 0.9);
       min-height: 240px;
+      h2 {
+        width: 100%;
+      }
     }
     .grasses {
       position: absolute;
