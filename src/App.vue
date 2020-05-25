@@ -4,8 +4,7 @@
       img.attachment-full.size-full(width='149', height='149', src='https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149', alt='Fork me on GitHub', data-recalc-dims='1')
     div
       section
-        h1 Let's Contribute!
-        h2 日本語でコントリビュートできるIssue 集めました
+        Logo
       section
         label プログラミング言語
         label(v-for='language in languages').lang
@@ -24,6 +23,7 @@ import languages, { Lang } from '@/languages'
 import Issues from '@/components/Issues.vue'
 import { GithubIssue, GithubResponse } from '@/@types/Github'
 import axios, { AxiosResponse } from 'axios'
+import Logo from '@/components/Logo.vue'
 const frequentChars = 'いうんかし'
 class Label {
   public name: string;
@@ -36,7 +36,8 @@ class Label {
 
 @Component({
   components: {
-    Issues
+    Issues,
+    Logo
   }
 })
 
