@@ -1,0 +1,10 @@
+version: "3"
+services:
+  app:
+    container_name: lets-contribute
+    build: ./
+    tty: true
+    volumes: 
+      - .:/app
+    ports: 
+      - 8080:8080

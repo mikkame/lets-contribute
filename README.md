@@ -27,3 +27,9 @@ yarn build
 ```
 yarn lint
 ```
+
+### docker compose
+```bash
+# serve at localhost:8080
+docker-compose up --build
+```
