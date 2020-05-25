@@ -10,7 +10,7 @@
           | {{data.title}}
           ExternalLinkIcon
       p
-        label(v-for='label in data.labels', :style="{backgroundColor: '#'+label.color}") {{label.name}}
+        label(v-for='label in data.labels', :style="getLabelStyle(label.color)") {{label.name}}
         | created at {{data.created_at}}
     hr
     div.description(:class='{active:open}')
@@ -23,6 +23,7 @@ import { Prop, Component, Vue } from 'vue-property-decorator'
 import { Marked, escape, Renderer } from 'marked-ts'
 import { GithubIssue } from '@/@types/Github'
 import ExternalLinkIcon from '@/components/ExternalLinkIcon.vue'
+import { getContrastYIQ } from '@/utils/color.ts'
 Marked.setOptions({
   renderer: new Renderer(),
   gfm: true,
@@ -60,6 +61,13 @@ export default class Issues extends Vue {
 
   public showToggle (): void {
     this.open = !this.open
+  }
+
+  public getLabelStyle (color: string): {backgroundColor: string; color: string} {
+    return {
+      backgroundColor: `#${color}`,
+      color: getContrastYIQ(color)
+    }
   }
 }
 </script>
