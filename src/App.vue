@@ -1,7 +1,5 @@
 <template lang="pug">
   div
-    a(href='https://github.com/mikkame/lets-contribute', style='position:absolute;right:0;top:0', target='_blank')
-      img.attachment-full.size-full(width='149', height='149', src='https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149', alt='Fork me on GitHub', data-recalc-dims='1')
     div
       section
         Logo
@@ -15,6 +13,8 @@
       Issues(v-for="issue in issues", :key="issue.id", :data="issue")
     section
       button(@click="paginate", v-if="issues.length") さらに読み込む
+    a(href='https://github.com/mikkame/lets-contribute', style='position:absolute;right:0;top:0', target='_blank')
+      img.attachment-full.size-full(width='149', height='149', src='https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149', alt='Fork me on GitHub', data-recalc-dims='1')
 </template>
 
 <script lang="ts">
