@@ -12,7 +12,7 @@
           i(:class="`devicon-${language.icon}-plain colored`", v-if="language.icon")
           | {{language.name}}
     section#issues
-      Issues(v-for="issue in issues", :key="issue.title", :data="issue")
+      Issues(v-for="issue in issues", :key="issue.id", :data="issue")
     section
       button(@click="paginate", v-if="issues.length") さらに読み込む
 </template>
