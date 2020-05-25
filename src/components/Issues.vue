@@ -9,7 +9,7 @@
         a(:href='data.html_url', target='_blank', rel="noopener noreferrer")
           | {{data.title}}
           ExternalLinkIcon
-      p
+      p.tags
         label(v-for='label in data.labels', :style="getLabelStyle(label.color)") {{label.name}}
         | created at {{data.created_at}}
     hr
@@ -75,6 +75,9 @@ export default class Issues extends Vue {
   .summary {
     position: relative;
     cursor: pointer;
+    .tags {
+      line-height: 2;
+    }
   }
   .description {
     position: relative;
