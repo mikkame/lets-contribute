@@ -5,7 +5,7 @@
         Logo
       section
         label プログラミング言語
-        div.langs
+        .langs
           label(v-for='language in languages').lang
             input(type='radio', name='lang', v-model="lang", :value="language.name", @change="changeLang")
             p
