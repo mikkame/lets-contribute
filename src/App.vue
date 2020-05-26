@@ -5,10 +5,12 @@
         Logo
       section
         label プログラミング言語
-        label(v-for='language in languages').lang
-          input(type='radio', name='lang', v-model="lang", :value="language.name", @change="changeLang")
-          i(:class="`devicon-${language.icon}-plain colored`", v-if="language.icon")
-          | {{language.name}}
+        div.langs
+          label(v-for='language in languages').lang
+            input(type='radio', name='lang', v-model="lang", :value="language.name", @change="changeLang")
+            p
+              i(:class="`devicon-${language.icon}-plain colored`", v-if="language.icon")
+              |{{language.name}}
     section#issues
       Issues(v-for="issue in issues", :key="issue.id", :data="issue")
     section
@@ -100,7 +102,33 @@ export default class App extends Vue {
     padding: 2px;
     margin: 3px;
   }
-  .lang {
-    margin: 2px 10px;
+  .langs {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    .lang {
+      margin: 2px 10px;
+      p {
+        display: inline-block;
+        margin: 0;
+        padding: 5px;
+        box-shadow: 0px 3px 5px rgba(0,0,0,0.1);
+        border-radius: 3px;
+        &:hover {
+          transition-duration: 0.3s;
+          background: #ebedf0;
+        }
+        i {
+          padding-right: 3px;
+        }
+      }
+      input[name="lang"] {
+        display: none;
+      }
+      input[name="lang"]:checked + p {
+        background: #d2d2d2;
+      }
+    }
   }
 </style>
