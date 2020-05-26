@@ -69,8 +69,8 @@ export default class App extends Vue {
     }).map((label: Label): string => {
       return `label:"${label.name}"`
     }).join(' ')).join(' ')
-
-    const result: AxiosResponse<GithubResponse> = await axios.get(`https://api.github.com/search/issues?q=${baseQuery}%20 ${frequentChars.split('').join(' OR ')}`, {
+    const getIssuesURL = `https://api.github.com/search/issues?q=${encodeURIComponent(baseQuery)}%20${encodeURIComponent(frequentChars.split('').join(' OR '))}`
+    const result: AxiosResponse<GithubResponse> = await axios.get(getIssuesURL, {
       params: {
         page: this.page,
         sort: 'created',
