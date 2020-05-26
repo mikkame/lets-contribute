@@ -1,7 +1,5 @@
 <template lang="pug">
   div
-    a(href='https://github.com/mikkame/lets-contribute', style='position:absolute;right:0;top:0', target='_blank')
-      img.attachment-full.size-full(width='149', height='149', src='https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149', alt='Fork me on GitHub', data-recalc-dims='1')
     div
       section
         Logo
@@ -12,9 +10,11 @@
           i(:class="`devicon-${language.icon}-plain colored`", v-if="language.icon")
           | {{language.name}}
     section#issues
-      Issues(v-for="issue in issues", :key="issue.title", :data="issue")
+      Issues(v-for="issue in issues", :key="issue.id", :data="issue")
     section
       button(@click="paginate", v-if="issues.length") さらに読み込む
+    a(href='https://github.com/mikkame/lets-contribute', style='position:absolute;right:0;top:0', target='_blank')
+      img.attachment-full.size-full(width='149', height='149', src='https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149', alt='Fork me on GitHub', data-recalc-dims='1')
 </template>
 
 <script lang="ts">
@@ -69,8 +69,8 @@ export default class App extends Vue {
     }).map((label: Label): string => {
       return `label:"${label.name}"`
     }).join(' ')).join(' ')
-
-    const result: AxiosResponse<GithubResponse> = await axios.get(`https://api.github.com/search/issues?q=${baseQuery}%20 ${frequentChars.split('').join(' OR ')}`, {
+    const getIssuesURL = `https://api.github.com/search/issues?q=${encodeURIComponent(baseQuery)}%20${encodeURIComponent(frequentChars.split('').join(' OR '))}`
+    const result: AxiosResponse<GithubResponse> = await axios.get(getIssuesURL, {
       params: {
         page: this.page,
         sort: 'created',
