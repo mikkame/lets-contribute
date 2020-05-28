@@ -32,10 +32,12 @@ export default class Logo extends Vue {
       font-size: 64px;
       margin: 0;
       width: 100%;
+      @media screen and ( max-width: 750px ) {
+        font-size: 32px
+      }
     }
     & .inner {
       margin: 60px;
-
       display: flex;
       justify-content: center;
       align-content: center;
@@ -43,8 +45,14 @@ export default class Logo extends Vue {
       color: black;
       background: rgba(255,255,255, 0.9);
       min-height: 240px;
+      @media screen and ( max-width: 750px ) {
+        margin: 30px
+      }
       h2 {
         width: 100%;
+        @media screen and ( max-width: 750px ) {
+          font-size: 20px
+        }
       }
     }
     .grasses {
