@@ -118,6 +118,7 @@ export default class App extends Vue {
         &:hover {
           transition-duration: 0.3s;
           background: #ebedf0;
+          cursor: pointer;
         }
         i {
           padding-right: 3px;
