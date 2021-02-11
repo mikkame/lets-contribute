@@ -72,6 +72,9 @@ export default class Issues extends Vue {
 }
 </script>
 <style lang="scss">
+  aside {
+    word-break: break-all;
+  }
   .summary {
     position: relative;
     cursor: pointer;
