@@ -68,6 +68,25 @@ export default [
   {
     name: 'Vue',
     icon: 'vuejs'
+  },
+  {
+    name: 'Scala',
+    icon: ''
+  },
+  {
+    name: 'Kotlin',
+    icon: ''
+  },
+  {
+    name: 'Rust',
+    icon: ''
+  },
+  {
+    name: 'Perl',
+    icon: ''
+  },
+  {
+    name: 'Haskell',
+    icon: ''
   }
-
 ] as Array<Lang>
